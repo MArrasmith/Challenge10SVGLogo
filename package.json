@@ -1,0 +1,25 @@
+{
+  "name": "challenge10svglogo",
+  "version": "1.0.0",
+  "description": "Basic logo generator",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MArrasmith/Challenge10SVGLogo.git"
+  },
+  "author": "Michael Arrasmith",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "9.2.11"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
