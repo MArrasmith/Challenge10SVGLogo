@@ -42,7 +42,7 @@ const init = () => {
     //prompt the user for info
     userPrompts()
     //writeFile with fs
-    .then(answers => writeFile('logo.svg', generateLogo(answers)){
+    .then(answers => {
         let logoShape;
 
         if (answers.shape === 'Triangle') {
@@ -52,11 +52,11 @@ const init = () => {
         } else (answers.shape === 'Square'); {
             logoShape = new Square();
         }
-          
-    },
     shape.setColor(answers.shapeColor)
     const fileContent = shape.render()
     fs.writeFile('logo.svg', fileContent)
-    )
+})
+    console.log(answers)
 }
+// Function call to initialize app
 init();
