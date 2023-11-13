@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
-const { Triangle, Circle, Square } = require('./lib/shapes');
+const { writeFile } = require('fs').promises;
+const { Triangle, Circle, Square, Shape } = require('./lib/shapes');
 
 
 
@@ -41,22 +41,19 @@ const userPrompts = () => {
 const init = () => {
     //prompt the user for info
     userPrompts()
-    //writeFile with fs
-    .then(answers => {
-        let logoShape;
-
-        if (answers.shape === 'Triangle') {
-            logoShape = new Triangle();
-        } else if (answers.shop === 'Circle') {
-            logoShape = new Circle();
-        } else (answers.shape === 'Square'); {
-            logoShape = new Square();
-        }
-    shape.setColor(answers.shapeColor)
-    const fileContent = shape.render()
-    fs.writeFile('logo.svg', fileContent)
-})
-    console.log(answers)
+        //writeFile with fs
+        .then(answers => {
+            let logoShape;
+            if (answers.shape === 'Triangle') {
+                logoShape = new Triangle(answers.shapeColor, answers.textColor, answers.textContent);
+            } else if (answers.shape === 'Circle') {
+                logoShape = new Circle(answers.shapeColor, answers.textColor, answers.textContent);
+            } else if (answers.shape === 'Square') {
+                logoShape = new Square(answers.shapeColor, answers.textColor, answers.textContent);
+            }
+            const fileContent = logoShape.render()
+            writeFile('logo.svg', fileContent)
+        })
 }
 // Function call to initialize app
 init();
